@@ -1,0 +1,22 @@
+<h2>Student Management</h2>
+<p>Welcome, {{ session['user'] }}! | <a href="/logout">Logout</a></p>
+<a href="/add-student">Add New Student</a>
+<table border="1" style="width:100%; margin-top:20px;">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Actions</th>
+    </tr>
+    {% for s in students %}
+    <tr>
+        <td>{{ s['name'] }}</td>
+        <td>{{ s['email'] }}</td>
+        <td>{{ s['course'] }}</td>
+        <td>
+            <a href="/edit/{{ s['id'] }}">Edit</a> | 
+            <a href="/delete/{{ s['id'] }}" onclick="return confirm('Delete this record?')">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
